@@ -16,7 +16,7 @@
 <meta property="og:description" content="this其实就是隐式的传参 今天来看一道面试题，彻底弄明白this  1234567891011121314let length &#x3D; 10;function fn() &amp;#123;    console.log(this.length);&amp;#125; let obj &#x3D; &amp;#123;  length: 5,  method: function(fn) &amp;#123;    fn();    argu">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-03-12T08:24:51.000Z">
-<meta property="article:modified_time" content="2020-03-12T08:32:21.000Z">
+<meta property="article:modified_time" content="2020-03-12T08:34:34.000Z">
 <meta property="article:author" content="JeanneWu">
 <meta property="article:tag" content="js面试">
 <meta name="twitter:card" content="summary">
@@ -169,6 +169,7 @@
 <li>今天来看一道面试题，彻底弄明白this</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> length = <span class="number">10</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.length);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  length: <span class="number">5</span>,</span><br><span class="line">  method: <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>) </span>&#123;</span><br><span class="line">    fn();</span><br><span class="line">    <span class="built_in">arguments</span>[<span class="number">0</span>]();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line">obj.method(fn, <span class="number">1</span>);<span class="comment">//输出是什么？</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 
 <p>答案是<br>iframe的个数<br>2</p>
 <ul>
@@ -345,15 +346,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">js面试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">正则表达式</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">js面试</a>
               </li>
             
             <div class="clearfix"></div>
