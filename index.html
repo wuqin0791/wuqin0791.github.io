@@ -142,6 +142,102 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-有趣javascript的this指向" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/12/%E6%9C%89%E8%B6%A3javascript%E7%9A%84this%E6%8C%87%E5%90%91/">有趣javascript的this指向</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/12/%E6%9C%89%E8%B6%A3javascript%E7%9A%84this%E6%8C%87%E5%90%91/" class="archive-article-date">
+  	<time datetime="2020-03-12T08:24:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="this其实就是隐式的传参"><a href="#this其实就是隐式的传参" class="headerlink" title="this其实就是隐式的传参"></a>this其实就是隐式的传参</h1><ul>
+<li>今天来看一道面试题，彻底弄明白this</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> length = <span class="number">10</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.length);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  length: <span class="number">5</span>,</span><br><span class="line">  method: <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>) </span>&#123;</span><br><span class="line">    fn();</span><br><span class="line">    <span class="built_in">arguments</span>[<span class="number">0</span>]();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line">obj.method(fn, <span class="number">1</span>);<span class="comment">//输出是什么？</span></span><br></pre></td></tr></table></figure>
+
+<p>答案是<br>iframe的个数<br>2</p>
+<ul>
+<li><p>你一定想问，what！ 没错，和5、10都没关系</p>
+</li>
+<li><p>在看this的时候，一定要看如何调用</p>
+</li>
+<li><p>看到调用的地方如果是简写，一定要写出call的第一个参数，明确是如何调用。</p>
+</li>
+</ul>
+<h4 id="fn"><a href="#fn" class="headerlink" title="fn"></a>fn</h4><ul>
+<li>在这里看到method里的fn可以写成fn.call(undefined), 也就是说this是window。</li>
+<li>查看文档，我们发现window.length说的是iframe的个数。</li>
+</ul>
+<h4 id="arguments0"><a href="#arguments0" class="headerlink" title="arguments0"></a>arguments<a href>0</a></h4><ul>
+<li>arguments<a href>0</a>可以写成， arguments.0.call(arguments)</li>
+<li>因此这里的this指的是arguments，也就是这里的实参fn，1，这样就能理解为什么这里要传两个参数了吧。</li>
+</ul>
+<p>所以 答案是 <br><br>iframe的个数 <br><br>2</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">js面试</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/12/%E6%9C%89%E8%B6%A3javascript%E7%9A%84this%E6%8C%87%E5%90%91/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-正则表达式（速查）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -465,6 +561,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">js面试</a>
               </li>
             
             <div class="clearfix"></div>
