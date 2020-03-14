@@ -142,6 +142,155 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-数组的深拷贝" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/14/%E6%95%B0%E7%BB%84%E7%9A%84%E6%B7%B1%E6%8B%B7%E8%B4%9D/">数组的深拷贝</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/14/%E6%95%B0%E7%BB%84%E7%9A%84%E6%B7%B1%E6%8B%B7%E8%B4%9D/" class="archive-article-date">
+  	<time datetime="2020-03-14T02:01:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>数组的深拷贝，支持对象是数组或者是对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,[<span class="number">2</span>,<span class="number">5</span>],&#123;</span><br><span class="line">  b:<span class="number">1</span></span><br><span class="line">&#125;]</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call(a[<span class="number">4</span>]))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepClone</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> result = <span class="built_in">Object</span>.prototype.toString.call(obj) === <span class="string">'[object Object]'</span>?&#123;&#125;:[];</span><br><span class="line">  <span class="keyword">if</span>( obj &amp;&amp; <span class="keyword">typeof</span>(obj)===<span class="string">'object'</span>)&#123;</span><br><span class="line">     <span class="keyword">for</span>(key <span class="keyword">in</span> a)&#123;</span><br><span class="line">        <span class="keyword">if</span>(obj.hasOwnProperty(key))&#123;</span><br><span class="line">           <span class="keyword">if</span>(obj[key] &amp;&amp; <span class="keyword">typeof</span>(obj[key] === <span class="string">'object'</span>))&#123;</span><br><span class="line">             result[key] = deepClone(obj[key]);</span><br><span class="line">           &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">             result[key] = obj[key];</span><br><span class="line">           &#125;</span><br><span class="line">        &#125;</span><br><span class="line">     &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> c = deepClone(a);</span><br><span class="line">c[<span class="number">4</span>].b = <span class="number">4</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a)</span><br></pre></td></tr></table></figure>
+
+<p>更多内容可以查看<a href="https://github.com/wuqin0791/wqDemo/tree/master/exercise" target="_blank" rel="noopener">github</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">js面试</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/14/%E6%95%B0%E7%BB%84%E7%9A%84%E6%B7%B1%E6%8B%B7%E8%B4%9D/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-应用Promise封装Ajax实践" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/13/%E5%BA%94%E7%94%A8Promise%E5%B0%81%E8%A3%85Ajax%E5%AE%9E%E8%B7%B5/">应用Promise封装Ajax实践</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/13/%E5%BA%94%E7%94%A8Promise%E5%B0%81%E8%A3%85Ajax%E5%AE%9E%E8%B7%B5/" class="archive-article-date">
+  	<time datetime="2020-03-13T08:19:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>axios在项目中经常使用，我们来看看如何把axios封装成好用的promise吧！</p>
+<h5 id="what-is-axios"><a href="#what-is-axios" class="headerlink" title="what is axios?"></a>what is axios?</h5><ul>
+<li>Promise based HTTP client for the browser and node.js</li>
+</ul>
+<p>咦? Promise based http？ where is promise?</p>
+<p>源码中查看：axios/lib/adapters/xhr.js有这样一段让我眼前一亮：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> <span class="title">xhrAdapter</span>(<span class="params">config</span>) </span>&#123;</span><br><span class="line"> <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> <span class="title">dispatchXhrRequest</span>(<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line"> &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/13/%E5%BA%94%E7%94%A8Promise%E5%B0%81%E8%A3%85Ajax%E5%AE%9E%E8%B7%B5/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-有趣javascript的this指向" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     

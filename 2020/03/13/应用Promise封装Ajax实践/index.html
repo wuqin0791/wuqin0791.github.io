@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: js面试 | JeanneWu&#39;s blog</title>
+  <title>应用Promise封装Ajax实践 | JeanneWu&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="JeanneWu&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/tags/js%E9%9D%A2%E8%AF%95/index.html">
+  <meta name="description" content="axios在项目中经常使用，我们来看看如何把axios封装成好用的promise吧！ what is axios? Promise based HTTP client for the browser and node.js  咦? Promise based http？ where is promise? 源码中查看：axios&#x2F;lib&#x2F;adapters&#x2F;xhr.js有这样一段让我眼前一亮： 12">
+<meta property="og:type" content="article">
+<meta property="og:title" content="应用Promise封装Ajax实践">
+<meta property="og:url" content="http://yoursite.com/2020/03/13/%E5%BA%94%E7%94%A8Promise%E5%B0%81%E8%A3%85Ajax%E5%AE%9E%E8%B7%B5/index.html">
 <meta property="og:site_name" content="JeanneWu&#39;s blog">
+<meta property="og:description" content="axios在项目中经常使用，我们来看看如何把axios封装成好用的promise吧！ what is axios? Promise based HTTP client for the browser and node.js  咦? Promise based http？ where is promise? 源码中查看：axios&#x2F;lib&#x2F;adapters&#x2F;xhr.js有这样一段让我眼前一亮： 12">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-03-13T08:19:40.000Z">
+<meta property="article:modified_time" content="2020-03-13T08:53:40.000Z">
 <meta property="article:author" content="JeanneWu">
 <meta name="twitter:card" content="summary">
   
@@ -140,98 +144,102 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-应用Promise封装Ajax实践" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/14/%E6%95%B0%E7%BB%84%E7%9A%84%E6%B7%B1%E6%8B%B7%E8%B4%9D/" class="archive-article-date">
-  	<time datetime="2020-03-14T02:01:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-14</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/14/%E6%95%B0%E7%BB%84%E7%9A%84%E6%B7%B1%E6%8B%B7%E8%B4%9D/">数组的深拷贝</a>
+    <h1 class="article-title" itemprop="name">
+      应用Promise封装Ajax实践
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">js面试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/12/%E6%9C%89%E8%B6%A3javascript%E7%9A%84this%E6%8C%87%E5%90%91/" class="archive-article-date">
-  	<time datetime="2020-03-12T08:24:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-12</time>
+        
+        <a href="/2020/03/13/%E5%BA%94%E7%94%A8Promise%E5%B0%81%E8%A3%85Ajax%E5%AE%9E%E8%B7%B5/" class="archive-article-date">
+  	<time datetime="2020-03-13T08:19:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-13</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/12/%E6%9C%89%E8%B6%A3javascript%E7%9A%84this%E6%8C%87%E5%90%91/">有趣javascript的this指向</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>axios在项目中经常使用，我们来看看如何把axios封装成好用的promise吧！</p>
+<h5 id="what-is-axios"><a href="#what-is-axios" class="headerlink" title="what is axios?"></a>what is axios?</h5><ul>
+<li>Promise based HTTP client for the browser and node.js</li>
+</ul>
+<p>咦? Promise based http？ where is promise?</p>
+<p>源码中查看：axios/lib/adapters/xhr.js有这样一段让我眼前一亮：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> <span class="title">xhrAdapter</span>(<span class="params">config</span>) </span>&#123;</span><br><span class="line"> <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> <span class="title">dispatchXhrRequest</span>(<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line"> &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">js面试</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2020/03/14/%E6%95%B0%E7%BB%84%E7%9A%84%E6%B7%B1%E6%8B%B7%E8%B4%9D/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          数组的深拷贝
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2020/03/12/%E6%9C%89%E8%B6%A3javascript%E7%9A%84this%E6%8C%87%E5%90%91/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">有趣javascript的this指向</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -259,9 +267,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
