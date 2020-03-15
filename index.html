@@ -142,6 +142,97 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-变量提升的几种情况" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/15/%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87%E7%9A%84%E5%87%A0%E7%A7%8D%E6%83%85%E5%86%B5/">变量提升的几种情况</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/15/%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87%E7%9A%84%E5%87%A0%E7%A7%8D%E6%83%85%E5%86%B5/" class="archive-article-date">
+  	<time datetime="2020-03-15T12:09:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="什么是变量提升"><a href="#什么是变量提升" class="headerlink" title="什么是变量提升"></a>什么是变量提升</h4><ol>
+<li>所有的声明都会提升到作用域的最顶上去。</li>
+<li>一个变量可以先使用再声明</li>
+</ol>
+<p>注意的是，函数的优先级高于变量的优先级。</p>
+<h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><p>变量的提升</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">num = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> num;</span><br><span class="line"><span class="built_in">console</span>.log(num) <span class="comment">//1</span></span><br></pre></td></tr></table></figure>
+
+<p>函数的提升</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">test()</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>函数优先级高于变量优先级</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">func(); <span class="comment">// 1</span></span><br><span class="line"><span class="keyword">var</span> func;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">func</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line">func = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="牢记这三点："><a href="#牢记这三点：" class="headerlink" title="牢记这三点："></a>牢记这三点：</h4><ol>
+<li>只有声明本身会被提升，而赋值操作不会被提升。</li>
+<li>变量会提升到其所在函数的最上面，而不是整个程序的最上面。</li>
+<li>函数声明会被提升，但函数表达式不会被提升。</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">js面试</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/15/%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87%E7%9A%84%E5%87%A0%E7%A7%8D%E6%83%85%E5%86%B5/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-彻底理解浏览器的缓存机制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
