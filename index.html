@@ -142,6 +142,88 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-优秀的数组去重方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/15/%E4%BC%98%E7%A7%80%E7%9A%84%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E6%96%B9%E6%B3%95/">优秀的数组去重方法</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/15/%E4%BC%98%E7%A7%80%E7%9A%84%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E6%96%B9%E6%B3%95/" class="archive-article-date">
+  	<time datetime="2020-03-15T02:49:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="奇妙的数组去重"><a href="#奇妙的数组去重" class="headerlink" title="奇妙的数组去重"></a>奇妙的数组去重</h4><ul>
+<li>方法一，用filter</li>
+<li>去除重复元素依靠的是indexOf总是返回第一个元素的位置，后续的重复元素位置与indexOf返回的位置不相等，因此被filter滤掉了。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> r</span><br><span class="line">	arr = [<span class="string">'apple'</span>, <span class="string">'banana'</span>, <span class="string">'grape'</span>, <span class="string">'orange'</span>, <span class="string">'apple'</span>, <span class="string">'banana'</span>, <span class="string">'grape'</span>, <span class="string">'orange'</span>];</span><br><span class="line"></span><br><span class="line">r = arr.filter(<span class="function">(<span class="params">cv,i,self</span>)=&gt;</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> self.indexOf(cv) === i;  </span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">r <span class="comment">//["apple", "banana", "grape", "orange"]</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>方法二：用set函数<br>接上面<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> newArr = [...new <span class="built_in">Set</span>(arr)]; <span class="comment">//["apple", "banana", "grape", "orange"]</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">js面试</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/15/%E4%BC%98%E7%A7%80%E7%9A%84%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E6%96%B9%E6%B3%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-自动生成新闻摘要的小机器人" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -162,10 +244,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>项目介绍：<br>这是一个关于NLP的项目，会根据输入的文章内容提炼出新闻摘要。</p>
-<p>前端：<br>前端页面部署在服务器47.52.115.217/index.html上<br>采用bootstrap快速布局，自适应移动和PC端<br>使用Jquery的库，ajax发送http请求。<br>存在跨域请求，设置了RequestHeader(“Access-Control-Allow-Origin”, “*”)</p>
-<p>页面展示<br><img src="/2020/03/14/%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E6%96%B0%E9%97%BB%E6%91%98%E8%A6%81%E7%9A%84%E5%B0%8F%E6%9C%BA%E5%99%A8%E4%BA%BA/1.png" alt><br><img src="/2020/03/14/%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E6%96%B0%E9%97%BB%E6%91%98%E8%A6%81%E7%9A%84%E5%B0%8F%E6%9C%BA%E5%99%A8%E4%BA%BA/2.png" alt></p>
-
+        <h5 id="项目介绍："><a href="#项目介绍：" class="headerlink" title="项目介绍："></a>项目介绍：</h5><p>这是一个关于NLP的项目，会根据输入的文章内容提炼出新闻摘要。</p>
+<h5 id="前端："><a href="#前端：" class="headerlink" title="前端："></a>前端：</h5><p>前端页面部署在服务器<a href="http://www.wuqin.tech/wq/上" target="_blank" rel="noopener">http://www.wuqin.tech/wq/上</a><br>采用bootstrap快速布局，自适应移动和PC端<br>使用Jquery的库，ajax发送http请求。<br>存在跨域请求，设置了RequestHeader(“Access-Control-Allow-Origin”, “*”)</p>
+<h5 id="文本预处理"><a href="#文本预处理" class="headerlink" title="文本预处理"></a>文本预处理</h5><p>训练词向量需要用到两个语料库：维基百科中文语料库 和 汉语新闻语料库。</p>
+        
+          <a class="article-more-a" href="/2020/03/14/%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E6%96%B0%E9%97%BB%E6%91%98%E8%A6%81%E7%9A%84%E5%B0%8F%E6%9C%BA%E5%99%A8%E4%BA%BA/#more">more >></a>
+        
       
 
       
@@ -768,11 +852,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">js面试</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color5">js面试</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -8,21 +8,22 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>自动生成新闻摘要的小机器人 | JeanneWu&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="项目介绍：这是一个关于NLP的项目，会根据输入的文章内容提炼出新闻摘要。 前端：前端页面部署在服务器47.52.115.217&#x2F;index.html上采用bootstrap快速布局，自适应移动和PC端使用Jquery的库，ajax发送http请求。存在跨域请求，设置了RequestHeader(“Access-Control-Allow-Origin”, “*”) 页面展示">
+  <meta name="description" content="项目介绍：这是一个关于NLP的项目，会根据输入的文章内容提炼出新闻摘要。 前端：前端页面部署在服务器http:&#x2F;&#x2F;www.wuqin.tech&#x2F;wq&#x2F;上采用bootstrap快速布局，自适应移动和PC端使用Jquery的库，ajax发送http请求。存在跨域请求，设置了RequestHeader(“Access-Control-Allow-Origin”, “*”) 文本预处理训练词向量需要用到两">
 <meta property="og:type" content="article">
 <meta property="og:title" content="自动生成新闻摘要的小机器人">
 <meta property="og:url" content="http://yoursite.com/2020/03/14/%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E6%96%B0%E9%97%BB%E6%91%98%E8%A6%81%E7%9A%84%E5%B0%8F%E6%9C%BA%E5%99%A8%E4%BA%BA/index.html">
 <meta property="og:site_name" content="JeanneWu&#39;s blog">
-<meta property="og:description" content="项目介绍：这是一个关于NLP的项目，会根据输入的文章内容提炼出新闻摘要。 前端：前端页面部署在服务器47.52.115.217&#x2F;index.html上采用bootstrap快速布局，自适应移动和PC端使用Jquery的库，ajax发送http请求。存在跨域请求，设置了RequestHeader(“Access-Control-Allow-Origin”, “*”) 页面展示">
+<meta property="og:description" content="项目介绍：这是一个关于NLP的项目，会根据输入的文章内容提炼出新闻摘要。 前端：前端页面部署在服务器http:&#x2F;&#x2F;www.wuqin.tech&#x2F;wq&#x2F;上采用bootstrap快速布局，自适应移动和PC端使用Jquery的库，ajax发送http请求。存在跨域请求，设置了RequestHeader(“Access-Control-Allow-Origin”, “*”) 文本预处理训练词向量需要用到两">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yoursite.com/2020/03/14/%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E6%96%B0%E9%97%BB%E6%91%98%E8%A6%81%E7%9A%84%E5%B0%8F%E6%9C%BA%E5%99%A8%E4%BA%BA/1.png">
-<meta property="og:image" content="http://yoursite.com/2020/03/14/%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E6%96%B0%E9%97%BB%E6%91%98%E8%A6%81%E7%9A%84%E5%B0%8F%E6%9C%BA%E5%99%A8%E4%BA%BA/2.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/14/%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E6%96%B0%E9%97%BB%E6%91%98%E8%A6%81%E7%9A%84%E5%B0%8F%E6%9C%BA%E5%99%A8%E4%BA%BA/3.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/14/%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E6%96%B0%E9%97%BB%E6%91%98%E8%A6%81%E7%9A%84%E5%B0%8F%E6%9C%BA%E5%99%A8%E4%BA%BA/4.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/14/%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E6%96%B0%E9%97%BB%E6%91%98%E8%A6%81%E7%9A%84%E5%B0%8F%E6%9C%BA%E5%99%A8%E4%BA%BA/5.png">
 <meta property="article:published_time" content="2020-03-14T14:39:04.000Z">
-<meta property="article:modified_time" content="2020-03-14T14:45:58.000Z">
+<meta property="article:modified_time" content="2020-03-14T15:11:24.000Z">
 <meta property="article:author" content="JeanneWu">
 <meta property="article:tag" content="NLP">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/03/14/%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E6%96%B0%E9%97%BB%E6%91%98%E8%A6%81%E7%9A%84%E5%B0%8F%E6%9C%BA%E5%99%A8%E4%BA%BA/1.png">
+<meta name="twitter:image" content="http://yoursite.com/2020/03/14/%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E6%96%B0%E9%97%BB%E6%91%98%E8%A6%81%E7%9A%84%E5%B0%8F%E6%9C%BA%E5%99%A8%E4%BA%BA/3.png">
   
     <link rel="alternative" href="/atom.xml" title="JeanneWu&#39;s blog" type="application/atom+xml">
   
@@ -168,9 +169,42 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>项目介绍：<br>这是一个关于NLP的项目，会根据输入的文章内容提炼出新闻摘要。</p>
-<p>前端：<br>前端页面部署在服务器47.52.115.217/index.html上<br>采用bootstrap快速布局，自适应移动和PC端<br>使用Jquery的库，ajax发送http请求。<br>存在跨域请求，设置了RequestHeader(“Access-Control-Allow-Origin”, “*”)</p>
-<p>页面展示<br><img src="/2020/03/14/%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E6%96%B0%E9%97%BB%E6%91%98%E8%A6%81%E7%9A%84%E5%B0%8F%E6%9C%BA%E5%99%A8%E4%BA%BA/1.png" alt><br><img src="/2020/03/14/%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E6%96%B0%E9%97%BB%E6%91%98%E8%A6%81%E7%9A%84%E5%B0%8F%E6%9C%BA%E5%99%A8%E4%BA%BA/2.png" alt></p>
+        <h5 id="项目介绍："><a href="#项目介绍：" class="headerlink" title="项目介绍："></a>项目介绍：</h5><p>这是一个关于NLP的项目，会根据输入的文章内容提炼出新闻摘要。</p>
+<h5 id="前端："><a href="#前端：" class="headerlink" title="前端："></a>前端：</h5><p>前端页面部署在服务器<a href="http://www.wuqin.tech/wq/上" target="_blank" rel="noopener">http://www.wuqin.tech/wq/上</a><br>采用bootstrap快速布局，自适应移动和PC端<br>使用Jquery的库，ajax发送http请求。<br>存在跨域请求，设置了RequestHeader(“Access-Control-Allow-Origin”, “*”)</p>
+<h5 id="文本预处理"><a href="#文本预处理" class="headerlink" title="文本预处理"></a>文本预处理</h5><p>训练词向量需要用到两个语料库：维基百科中文语料库 和 汉语新闻语料库。</p>
+<a id="more"></a>
+<h5 id="维基百科文本预处理"><a href="#维基百科文本预处理" class="headerlink" title="维基百科文本预处理"></a>维基百科文本预处理</h5><ul>
+<li>文本读取：wikiextractor，存储为json，每个生成的文件中，每行对应一个以 JSON 格式存储的词条，格式如下：<br>{“id”: xxx, “url”: xxx, “title”: xxx, “text”: xxx}</li>
+</ul>
+<p>其中text的值对应的是该词条的内容，即我们需要的数据。<br>文本清洗：去除特殊符号，数字，英文，以及繁体转简体（使用opencc-python-reimplemented 库），提取token</p>
+<h5 id="汉语新闻语料库预处理"><a href="#汉语新闻语料库预处理" class="headerlink" title="汉语新闻语料库预处理"></a>汉语新闻语料库预处理</h5><p>文本清洗：去除特殊符号，数字，英文，提取token</p>
+<h5 id="使用Gensim进行词向量训练"><a href="#使用Gensim进行词向量训练" class="headerlink" title="使用Gensim进行词向量训练"></a>使用Gensim进行词向量训练</h5><p>测试词向量的语义相似性（以‘数学’为例）和词向量的线性关系（以analogy(‘中国’, ‘汉语’, ‘美国’) 和analogy(‘美国’, ‘奥巴马’, ‘美国’) 为例）:</p>
+<h5 id="词向量的可视化"><a href="#词向量的可视化" class="headerlink" title="词向量的可视化:"></a>词向量的可视化:</h5><ul>
+<li>使用t-sne进行高维向量的可视化</li>
+</ul>
+<p><img src="/2020/03/14/%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E6%96%B0%E9%97%BB%E6%91%98%E8%A6%81%E7%9A%84%E5%B0%8F%E6%9C%BA%E5%99%A8%E4%BA%BA/3.png" alt><br>全部词向量可视化</p>
+<p><img src="/2020/03/14/%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E6%96%B0%E9%97%BB%E6%91%98%E8%A6%81%E7%9A%84%E5%B0%8F%E6%9C%BA%E5%99%A8%E4%BA%BA/4.png" alt><br>只显示词频大于10000 的词</p>
+<h5 id="参数调优"><a href="#参数调优" class="headerlink" title="参数调优"></a>参数调优</h5><ul>
+<li>SIF论文中介绍的算法，核心参数为词向量权重表达式a/(a+p(w))中的a值</li>
+<li>调参结果评判标准：选定人工标注好的句子相似度数据集，用SIF算法的到句子的向量，用余弦距离作为句子相似度，将得到的结果与人工标注的结果比较，pearsonr值越大说明越接近标注（真实）值。使用不同a值进行上述运算，比较效果。</li>
+<li>调参范围：根据论文作者经验，最优值通常为1e-3或1e-4，因此决定在此范围内做搜索，如果遇到极值点，则在极值点附近用更小的步进进行搜索。</li>
+<li>选用数据集： <a href="https://github.com/IAdmireu/ChineseSTS" target="_blank" rel="noopener">https://github.com/IAdmireu/ChineseSTS</a></li>
+</ul>
+<h5 id="参数调整记录"><a href="#参数调整记录" class="headerlink" title="参数调整记录"></a>参数调整记录</h5><ul>
+<li>首先以1e-4为步进，结果如下：<br><img src="/2020/03/14/%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E6%96%B0%E9%97%BB%E6%91%98%E8%A6%81%E7%9A%84%E5%B0%8F%E6%9C%BA%E5%99%A8%E4%BA%BA/5.png" alt></li>
+</ul>
+<p>在所选定区间内，效果呈单调递减趋势，固不再进行进一步搜索，使用1e-4为最后参数。<br>调参代码地址： <a href="https://github.com/mengzeyu/nlp-project-01/blob/master/parameter_optimization.ipynb" target="_blank" rel="noopener">https://github.com/mengzeyu/nlp-project-01/blob/master/parameter_optimization.ipynb</a></p>
+<h5 id="后端restful服务"><a href="#后端restful服务" class="headerlink" title="后端restful服务"></a>后端restful服务</h5><p>使用flask-restful编写，简洁，部署快捷。<br>只提供数据，做到前后端分离，方便共同开发。<br>在算法函数的基础上，添加一些异常情况处理（如句子中的词语都找不到对应词向量时的处理），保证服务稳定性</p>
+<p>代码地址：<a href="https://github.com/mengzeyu/nlp-project-01/blob/master/restful.py" target="_blank" rel="noopener">https://github.com/mengzeyu/nlp-project-01/blob/master/restful.py</a></p>
+<h5 id="项目的优点"><a href="#项目的优点" class="headerlink" title="项目的优点"></a>项目的优点</h5><ul>
+<li>使用word2vec 词向量模型，采用维基百科中文语料库+汉语新闻语料库进行词向量的训练</li>
+<li>使用普林斯顿大学提出来的SIF方法，进行句子的向量化</li>
+<li>通过计算句子向量与标题向量、全文向量的余弦相似和相关系数得出句子与全文的相关度</li>
+<li>采用KNN的思想对句子的相关度与周围其他句子的相关度进行加权求和平滑，使句子之间变得更通顺</li>
+<li>算法模型实现封装性良好，提供动态调整参数的接口</li>
+<li>提供良好的可视化页面</li>
+</ul>
+<h5 id="模型分析报告"><a href="#模型分析报告" class="headerlink" title="模型分析报告"></a>模型分析报告</h5><p>算法模型在SIF算法的权值a为1e-4，使用余弦相似度计算句子相关度，句子相关度KNN平滑窗口为1（即句子与前后一个句子的相关度加权求和）情况下，能够正确对输入文本内容进行摘要，输出流畅通顺的摘要内容。</p>
 
       
 
@@ -202,6 +236,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2020/03/15/%E4%BC%98%E7%A7%80%E7%9A%84%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E6%96%B9%E6%B3%95/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          优秀的数组去重方法
+        
+      </div>
+    </a>
   
   
     <a href="/2020/03/14/%E6%95%B0%E7%BB%84%E7%9A%84%E6%B7%B1%E6%8B%B7%E8%B4%9D/" id="article-nav-older" class="article-nav-link-wrap">
@@ -332,11 +375,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">js面试</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color5">js面试</a>
               </li>
              
               <li class="article-tag-list-item">
