@@ -142,6 +142,165 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-原生js写一个拖拽效果" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/08/%E5%8E%9F%E7%94%9Fjs%E5%86%99%E4%B8%80%E4%B8%AA%E6%8B%96%E6%8B%BD%E6%95%88%E6%9E%9C/">原生js写一个拖拽效果</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/08/%E5%8E%9F%E7%94%9Fjs%E5%86%99%E4%B8%80%E4%B8%AA%E6%8B%96%E6%8B%BD%E6%95%88%E6%9E%9C/" class="archive-article-date">
+  	<time datetime="2020-04-08T06:27:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="先上代码呗"><a href="#先上代码呗" class="headerlink" title="先上代码呗~"></a>先上代码呗~</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>HTML5拖拽<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css"><span class="selector-id">#div1</span> &#123;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">width</span><span class="selector-pseudo">:350px</span>;<span class="selector-tag">height</span><span class="selector-pseudo">:70px</span>;<span class="selector-tag">padding</span><span class="selector-pseudo">:10px</span>;<span class="selector-tag">border</span><span class="selector-pseudo">:1px</span> <span class="selector-tag">solid</span> <span class="selector-id">#aaaaaa</span>;</span></span><br><span class="line">    position: absolute;</span><br><span class="line">    top: 0px;</span><br><span class="line">    left: 0px;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div1"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">let</span> dom = <span class="built_in">document</span>.getElementById(<span class="string">'div1'</span>);</span></span><br><span class="line"><span class="javascript">  <span class="keyword">let</span> status = <span class="literal">false</span>;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">let</span> position = [<span class="number">350</span>/<span class="number">2</span>, <span class="number">35</span>];;</span></span><br><span class="line"><span class="actionscript">dom.addEventListener(<span class="string">'mousedown'</span>, e =&gt; &#123;</span></span><br><span class="line"><span class="actionscript">    status = <span class="literal">true</span>;</span></span><br><span class="line">    </span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(<span class="number">11</span>);</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="javascript"><span class="built_in">document</span>.addEventListener(<span class="string">'mousemove'</span>, e =&gt; &#123;</span></span><br><span class="line"><span class="actionscript">    <span class="keyword">if</span> (status === <span class="literal">false</span>) <span class="keyword">return</span>;</span></span><br><span class="line">        </span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> left = +dom.style.left.split(<span class="string">'px'</span>)[<span class="number">0</span>] || <span class="number">0</span>;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> top = +dom.style.top.split(<span class="string">'px'</span>)[<span class="number">0</span>] || <span class="number">0</span>;</span></span><br><span class="line"></span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> x = e.clientX;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> y = e.clientY;</span></span><br><span class="line"></span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> deltaX = x - position[<span class="number">0</span>];</span></span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> deltaY = y - position[<span class="number">1</span>];</span></span><br><span class="line"></span><br><span class="line">        deltaX = deltaX &lt; 0 ? 0: deltaX;</span><br><span class="line">        deltaY = deltaY &lt; 0 ? 0: deltaY;</span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="actionscript">        dom.style.left = deltaX + <span class="string">'px'</span>;</span></span><br><span class="line"><span class="actionscript">        dom.style.top = deltaY + <span class="string">'px'</span>;</span></span><br><span class="line"></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(deltaX,<span class="string">'deltaX'</span>);</span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(dom.style.left,<span class="string">'dom.style.left'</span>);</span></span><br><span class="line">       </span><br><span class="line">        </span><br><span class="line"><span class="actionscript">        <span class="comment">// position[x,y];</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="javascript"><span class="built_in">document</span>.addEventListener(<span class="string">'mouseup'</span>, e =&gt; &#123;</span></span><br><span class="line"><span class="actionscript">    status = <span class="literal">false</span>;</span></span><br><span class="line">    position[e.clientX, e.clientY];</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="思想："><a href="#思想：" class="headerlink" title="思想："></a>思想：</h2><ol>
+<li>鼠标移动后停住的距离 - 起始的距离 = delta 改变的距离</li>
+<li>clientX 和 clientY 是距离浏览器左上角原点的水平和垂直距离</li>
+<li>计算的时候，要小心 dom.style.left 默认带px单位</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">js面试</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/08/%E5%8E%9F%E7%94%9Fjs%E5%86%99%E4%B8%80%E4%B8%AA%E6%8B%96%E6%8B%BD%E6%95%88%E6%9E%9C/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-前端安全之xss和csrf" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/15/%E5%89%8D%E7%AB%AF%E5%AE%89%E5%85%A8%E4%B9%8Bxss%E5%92%8Ccsrf/">前端安全之xss和csrf（待完成）</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/15/%E5%89%8D%E7%AB%AF%E5%AE%89%E5%85%A8%E4%B9%8Bxss%E5%92%8Ccsrf/" class="archive-article-date">
+  	<time datetime="2020-03-15T15:20:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="什么是xss攻击"><a href="#什么是xss攻击" class="headerlink" title="什么是xss攻击"></a>什么是xss攻击</h4><p>XSS攻击（cross-site-script）跨站脚本攻击。本质上就是向客户端注入一段恶意的代码，阻碍用户正常使用网站的脚本攻击。</p>
+<h4 id="XSS分为哪几类？"><a href="#XSS分为哪几类？" class="headerlink" title="XSS分为哪几类？"></a>XSS分为哪几类？</h4><ol>
+<li>反射型</li>
+<li>储存型</li>
+<li>基于DOM</li>
+</ol>
+<h4 id="反射型"><a href="#反射型" class="headerlink" title="反射型"></a>反射型</h4>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">js面试</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/15/%E5%89%8D%E7%AB%AF%E5%AE%89%E5%85%A8%E4%B9%8Bxss%E5%92%8Ccsrf/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-变量提升的几种情况" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -174,6 +333,10 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">test()</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>函数优先级高于变量优先级</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">func(); <span class="comment">// 1</span></span><br><span class="line"><span class="keyword">var</span> func;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">func</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line">func = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但是如果变量没有提升，结果会完全不同</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> func;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">func</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line">func = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line">func();</span><br></pre></td></tr></table></figure>
+
 <p>(Noticed)JavaScript only hoists declarations, not initializations. If a variable is declared and initialized after using it, the value will be undefined. For example:</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(num); <span class="comment">// Returns undefined </span></span><br><span class="line"><span class="keyword">var</span> num;</span><br><span class="line">num = <span class="number">6</span>;</span><br></pre></td></tr></table></figure>
 <p>But </p>
@@ -183,6 +346,7 @@
 <li>变量会提升到其所在函数的最上面，而不是整个程序的最上面。</li>
 <li>函数声明会被提升，但函数表达式不会被提升。</li>
 </ol>
+<h4 id="js变量提升面试题解析"><a href="#js变量提升面试题解析" class="headerlink" title="js变量提升面试题解析"></a>js变量提升面试题解析</h4><p><a href="https://www.jianshu.com/p/df11f3ba355c" target="_blank" rel="noopener">https://www.jianshu.com/p/df11f3ba355c</a></p>
 
       
 
@@ -780,157 +944,10 @@
 
 
   
-    <article id="post-linux基本操作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/22/linux%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/">linux基本操作</a>
-    </h1>
-  
-
-        
-        <a href="/2020/02/22/linux%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" class="archive-article-date">
-  	<time datetime="2020-02-22T09:12:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="修改directory权限"><a href="#修改directory权限" class="headerlink" title="修改directory权限"></a>修改directory权限</h3><p>chown name:身份 ./*</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown jeannewu:staff .&#x2F;*</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/22/linux%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-My-New-Post" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/19/My-New-Post/">匹配IP的正则表达式</a>
-    </h1>
-  
-
-        
-        <a href="/2020/02/19/My-New-Post/" class="archive-article-date">
-  	<time datetime="2020-02-19T15:12:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="正则表达式（regulation-expression）"><a href="#正则表达式（regulation-expression）" class="headerlink" title="正则表达式（regulation expression）"></a>正则表达式（regulation expression）</h3><p>几乎是每个语言都会使用到的，比如python，javascript，java，c++，c#，下面我想带大家来写一个能匹配IP的正则表达式，也检验一下自己的学习成果。</p>
-        
-          <a class="article-more-a" href="/2020/02/19/My-New-Post/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">正则表达式</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/19/My-New-Post/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+    </nav>
   
 
 
