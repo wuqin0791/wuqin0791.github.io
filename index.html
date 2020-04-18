@@ -142,6 +142,93 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-一个关于http的总结-发誓再也不要被面试官虐" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/18/%E4%B8%80%E4%B8%AA%E5%85%B3%E4%BA%8Ehttp%E7%9A%84%E6%80%BB%E7%BB%93-%E5%8F%91%E8%AA%93%E5%86%8D%E4%B9%9F%E4%B8%8D%E8%A6%81%E8%A2%AB%E9%9D%A2%E8%AF%95%E5%AE%98%E8%99%90/">一个关于http的总结,发誓再也不要被面试官虐</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/18/%E4%B8%80%E4%B8%AA%E5%85%B3%E4%BA%8Ehttp%E7%9A%84%E6%80%BB%E7%BB%93-%E5%8F%91%E8%AA%93%E5%86%8D%E4%B9%9F%E4%B8%8D%E8%A6%81%E8%A2%AB%E9%9D%A2%E8%AF%95%E5%AE%98%E8%99%90/" class="archive-article-date">
+  	<time datetime="2020-04-18T07:48:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>Q:为什么会想总结一个这样的话题呢？<br>A:本质上，就是不想再被面试官虐；其次就是改变自己”被灌输“的思维习惯。</p>
+</blockquote>
+<h2 id="什么是http-什么是https-（先来点basic）"><a href="#什么是http-什么是https-（先来点basic）" class="headerlink" title="什么是http? 什么是https?（先来点basic）"></a>什么是http? 什么是https?（先来点basic）</h2><blockquote>
+<p>http英文是hyperText Transfer Protocol，超文本传输协议<br>https英文是hyperText Transfer Protocol Secure, 超文本传输安全协议</p>
+</blockquote>
+<h2 id="差别在哪里？-差别在于多了S。"><a href="#差别在哪里？-差别在于多了S。" class="headerlink" title="差别在哪里？ 差别在于多了S。"></a>差别在哪里？ 差别在于多了S。</h2><blockquote>
+<p>表面上多了个secure，这里面需要解释的东西就挺多的了。<br>secure本质上是基于SSL服务器数字证书的，SSL（Secure Sockets Layer）是一个安全协议（位于安全套接层），由网景公司开发，而SSL证书是遵从这样一个协议的「服务器数字证书」，在SSL 3.0的协议规范上，是SSL 3.0的后续版本。</p>
+</blockquote>
+<h2 id="这个SSL证书在https里担任什么角色？所以，让我们来聊聊HTTPS的过程吧"><a href="#这个SSL证书在https里担任什么角色？所以，让我们来聊聊HTTPS的过程吧" class="headerlink" title="这个SSL证书在https里担任什么角色？所以，让我们来聊聊HTTPS的过程吧~"></a>这个SSL证书在https里担任什么角色？所以，让我们来聊聊HTTPS的过程吧~</h2><p><img src="/2020/04/18/%E4%B8%80%E4%B8%AA%E5%85%B3%E4%BA%8Ehttp%E7%9A%84%E6%80%BB%E7%BB%93-%E5%8F%91%E8%AA%93%E5%86%8D%E4%B9%9F%E4%B8%8D%E8%A6%81%E8%A2%AB%E9%9D%A2%E8%AF%95%E5%AE%98%E8%99%90/1.png" alt></p>
+<h2 id="提问"><a href="#提问" class="headerlink" title="提问"></a>提问</h2><blockquote>
+<p>为什么有了加密算法，还要用HASH算法？<br>HASH算法是用来确认服务器的身份的，防止中途被篡改，生成的数字签名就是这个作用。<br>原理是，服务端对证书内容用HASH加密，再用CA证书的私钥加密，生成数字签名，放在证书结尾。<br>客户端收到消息，先用CA证书中的公钥解密，得到结果H1, 然后用HASH算法对证书内容加密，得到H2<br>对比H1是否等于H2，以确定信息是否篡改。</p>
+</blockquote>
+<p>证书在非对称加密里的作用，证书里的公钥在对称加密里的作用？</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">js面试</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/18/%E4%B8%80%E4%B8%AA%E5%85%B3%E4%BA%8Ehttp%E7%9A%84%E6%80%BB%E7%BB%93-%E5%8F%91%E8%AA%93%E5%86%8D%E4%B9%9F%E4%B8%8D%E8%A6%81%E8%A2%AB%E9%9D%A2%E8%AF%95%E5%AE%98%E8%99%90/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-手写一个promise" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -865,85 +952,6 @@
 
 
   
-    <article id="post-有趣javascript的this指向" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/12/%E6%9C%89%E8%B6%A3javascript%E7%9A%84this%E6%8C%87%E5%90%91/">有趣javascript的this指向</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/12/%E6%9C%89%E8%B6%A3javascript%E7%9A%84this%E6%8C%87%E5%90%91/" class="archive-article-date">
-  	<time datetime="2020-03-12T08:24:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="this其实就是隐式的传参"><a href="#this其实就是隐式的传参" class="headerlink" title="this其实就是隐式的传参"></a>this其实就是隐式的传参</h1><ul>
-<li>今天来看一道面试题，彻底弄明白this</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> length = <span class="number">10</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.length);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  length: <span class="number">5</span>,</span><br><span class="line">  method: <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>) </span>&#123;</span><br><span class="line">    fn();</span><br><span class="line">    <span class="built_in">arguments</span>[<span class="number">0</span>]();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line">obj.method(fn, <span class="number">1</span>);<span class="comment">//输出是什么？</span></span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2020/03/12/%E6%9C%89%E8%B6%A3javascript%E7%9A%84this%E6%8C%87%E5%90%91/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">js面试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/12/%E6%9C%89%E8%B6%A3javascript%E7%9A%84this%E6%8C%87%E5%90%91/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1038,11 +1046,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color1">正则表达式</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">正则表达式</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
