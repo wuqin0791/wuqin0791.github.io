@@ -16,8 +16,9 @@
 <meta property="og:description" content="Q:为什么会想总结一个这样的话题呢？A:本质上，就是不想再被面试官虐；其次就是改变自己”被灌输“的思维习惯。  什么是http? 什么是https?（先来点basic） http英文是hyperText Transfer Protocol，超文本传输协议https英文是hyperText Transfer Protocol Secure, 超文本传输安全协议  差别在哪里？ 差别在于多了S。 表">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://yoursite.com/2020/04/18/%E4%B8%80%E4%B8%AA%E5%85%B3%E4%BA%8Ehttp%E7%9A%84%E6%80%BB%E7%BB%93-%E5%8F%91%E8%AA%93%E5%86%8D%E4%B9%9F%E4%B8%8D%E8%A6%81%E8%A2%AB%E9%9D%A2%E8%AF%95%E5%AE%98%E8%99%90/1.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/18/%E4%B8%80%E4%B8%AA%E5%85%B3%E4%BA%8Ehttp%E7%9A%84%E6%80%BB%E7%BB%93-%E5%8F%91%E8%AA%93%E5%86%8D%E4%B9%9F%E4%B8%8D%E8%A6%81%E8%A2%AB%E9%9D%A2%E8%AF%95%E5%AE%98%E8%99%90/OSI%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B.gif">
 <meta property="article:published_time" content="2020-04-18T07:48:55.000Z">
-<meta property="article:modified_time" content="2020-04-18T11:47:56.000Z">
+<meta property="article:modified_time" content="2020-04-18T12:17:50.000Z">
 <meta property="article:author" content="JeanneWu">
 <meta property="article:tag" content="js面试">
 <meta name="twitter:card" content="summary">
@@ -185,6 +186,31 @@
 <li>证书在非对称加密里的作用？<br>证书是CA颁布的，由第三方来发布公钥和私钥。但是也存在CA证书被篡改的情况，因此需要数字签名来验证。</li>
 </ol>
 </blockquote>
+<h2 id="http和https的区别？"><a href="#http和https的区别？" class="headerlink" title="http和https的区别？"></a>http和https的区别？</h2><blockquote>
+<ol>
+<li>HTTP 的URL 以http:// 开头，而HTTPS 的URL 以https:// 开头</li>
+<li>HTTP 是不安全的，而 HTTPS 是安全的</li>
+<li>HTTP 标准端口是80 ，而 HTTPS 的标准端口是443</li>
+<li>在OSI 网络模型中，HTTP工作于应用层，而HTTPS 的安全传输机制工作在传输层</li>
+<li>HTTP 无法加密，而HTTPS 对传输的数据进行加密</li>
+<li>HTTP无需证书，而HTTPS 需要CA机构wosign的颁发的SSL证书</li>
+</ol>
+</blockquote>
+<h2 id="OSI的网络模型"><a href="#OSI的网络模型" class="headerlink" title="OSI的网络模型"></a>OSI的网络模型</h2><ol>
+<li>第一层 物理层</li>
+<li>第二层 数据链路层</li>
+<li>第三层 网络层</li>
+<li>第四层 传输层</li>
+<li>第五层 会话层</li>
+<li>第六层 表示层</li>
+<li>第七层 应用层</li>
+</ol>
+<blockquote>
+<ul>
+<li>特别重要的是，http是在应用层，https是在传输层（因为需要借助会话层的SSL/TLS的安全协议），TCP/IP是在传输层</li>
+</ul>
+</blockquote>
+<p>图：<br><img src="/2020/04/18/%E4%B8%80%E4%B8%AA%E5%85%B3%E4%BA%8Ehttp%E7%9A%84%E6%80%BB%E7%BB%93-%E5%8F%91%E8%AA%93%E5%86%8D%E4%B9%9F%E4%B8%8D%E8%A6%81%E8%A2%AB%E9%9D%A2%E8%AF%95%E5%AE%98%E8%99%90/OSI%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B.gif" alt></p>
 
       
 
