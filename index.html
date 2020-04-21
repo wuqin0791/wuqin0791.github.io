@@ -181,48 +181,10 @@
 <li>所有的形式的文件都可以传输，包括图像视频等二进制文件</li>
 <li>除了GET，还引入了POST和HEAD命令</li>
 <li>http请求的回应格式也不同，除了数据，还有http header数据头部分</li>
-<li>缓存主要靠的是If-Modified-Since,Expires</li>
-</ol>
-<h2 id="存在的问题（这个是个1-1改进的基础）"><a href="#存在的问题（这个是个1-1改进的基础）" class="headerlink" title="存在的问题（这个是个1.1改进的基础）"></a>存在的问题（这个是个1.1改进的基础）</h2><blockquote>
-<p>简单来说就是一个TCP只能有发起一个http连接，并且tcp的因为要握手，所以速度非常慢。</p>
-</blockquote>
-<ul>
-<li>每个 TCP 连接只能发送一个请求。发送数据完毕，连接就关闭，如果还要请求其他资源，就必须再新建一个连接。</li>
-<li>TCP 连接的新建成本很高，因为需要客户端和服务器三次握手，并且开始时发送速率较慢（slow start）。</li>
-</ul>
-<h2 id="http-1-1"><a href="#http-1-1" class="headerlink" title="http/1.1"></a>http/1.1</h2><ol>
-<li>长连接（PersistentConnection）： 就是说一个TCP/IP连接可以发送多个http请求和响应。默认开启 Connection： keep-alive，减少每次请求都要发起TCP/IP请求的时间和延迟。</li>
-<li>1.1的缓存新增了更多的字段：Etag, If-Unmodified-Since, If-Match, If-None-Match</li>
-<li><a href="https://blog.csdn.net/zhangliangzi/article/details/51348755" target="_blank" rel="noopener">断点续传</a>, 就是大文件下载的断点实现，Range和Content-Range这两个字段来控制，状态码返回206，如果资源有变动，就靠last-modified或者Etag这样的字段和If-Range配合来判断资源是否变化。（这个特性可以解决腾讯wxg问的大文件上传如何处理）</li>
-<li>新增24个错误响应码</li>
-<li>Host 头处理：在 HTTP1.0 中认为每台服务器都绑定一个唯一的 IP 地址，因此，请求消息中的 URL 并没有传递主机名（hostname）。但随着虚拟主机技术的发展，在一台物理服务器上可以存在多个虚拟主机（Multi-homed Web Servers），并且它们共享一个 IP 地址。HTTP1.1 的请求消息和响应消息都应支持 Host 头域，且请求消息中如果没有 Host 头域会报告一个错误（400 Bad Request）。</li>
-</ol>
-<h2 id="1-1的问题"><a href="#1-1的问题" class="headerlink" title="1.1的问题"></a>1.1的问题</h2><ul>
-<li>TCP/IP复用解决连接的耗时和延迟，但是这里的http请求是按顺序执行的，会产生”队头堵塞”（Head-of-line blocking）。</li>
-<li>HTTP1.x 在传输数据时，所有传输的内容都是明文，客户端和服务器端都无法验证对方的身份，这在一定程度上无法保证数据的安全性。</li>
-<li>HTTP1.x 在使用时，header 里携带的内容过大，在一定程度上增加了传输的成本，并且每次请求 header 基本不怎么变化，尤其在移动端增加用户流量。</li>
-<li>虽然 HTTP1.x 支持了 keep-alive，来弥补多次创建连接产生的延迟，但是 keep-alive 使用多了同样会给服务端带来大量的性能压力，并且对于单个文件被不断请求的服务(例如图片存放网站)，keep-alive 可能会极大的影响性能，因为它在文件被请求之后还保持了不必要的连接很长时间。<br>keep-alive带来的问题：同域并行请求限制带来的阻塞（6~8）个</li>
-</ul>
-<h2 id="SPDY协议是HTTP2的基础"><a href="#SPDY协议是HTTP2的基础" class="headerlink" title="SPDY协议是HTTP2的基础"></a>SPDY协议是HTTP2的基础</h2><ol>
-<li>多路复用，也就是说在TCP/IP的链接下，同时发送多个请求，收到多个响应，不再受到阻塞的问题。</li>
-<li>请求优先级（request prioritization）。多路复用带来一个新的问题是，在连接共享的基础之上有可能会导致关键请求被阻塞。SPDY 允许给每个 request 设置优先级，这样重要的请求就会优先得到响应。比如浏览器加载首页，首页的 html 内容应该优先展示，之后才是各种静态资源文件，脚本文件等加载，这样可以保证用户能第一时间看到网页内容。</li>
-<li>header 压缩。前面提到 HTTP1.x 的 header 很多时候都是重复多余的。选择合适的压缩算法可以减小包的大小和数量。</li>
-</ol>
-<h2 id="HTTP2"><a href="#HTTP2" class="headerlink" title="HTTP2"></a>HTTP2</h2><ol>
-<li>二进制分帧：HTTP/2 的所有帧都采用二进制编码<blockquote>
-<p>帧、流、消息的关系:<br>每个数据流都以消息的形式发送，而消息又由一个或多个帧组成。 帧是流中的数据单位。一个数据报的header帧可以分成多个 header 帧，data 帧可以分成多个 data 帧。</p>
-</blockquote>
-</li>
-<li>多路复用的补充<blockquote>
-<p><b>多路复用的时候如何保证顺序发出的和接收的是同一个：</b>一个 request 对应一个 id，这样一个连接上可以有多个 request，每个连接的 request 可以随机的混杂在一起，接收方可以根据 request 的 id 将 request 再归属到各自不同的服务端请求里面</p>
-</blockquote>
-</li>
-<li>请求优先级<blockquote>
-<p>把 HTTP 消息分解为很多独立的帧之后，就可以通过优化这些帧的交错和传输顺序，每个流都可以带有一个 31 比特的优先值：0 表示最高优先级；2 的 31 次方-1 表示最低优先级。比如，可以把首页请求的优先级设高一些。</p>
-</blockquote>
-</li>
-</ol>
-
+<li>缓存主要靠的是If-Modified-Since,Expires</li></ol>
+        
+          <a class="article-more-a" href="/2020/04/21/http%E7%9A%84%E5%8F%91%E5%B1%95%E5%8F%B2/#more">more >></a>
+        
       
 
       
