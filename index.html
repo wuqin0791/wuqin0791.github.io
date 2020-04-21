@@ -142,6 +142,137 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-http的发展史" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/21/http%E7%9A%84%E5%8F%91%E5%B1%95%E5%8F%B2/">http的发展史</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/21/http%E7%9A%84%E5%8F%91%E5%B1%95%E5%8F%B2/" class="archive-article-date">
+  	<time datetime="2020-04-21T03:19:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="http的发展史可以分为四个版本"><a href="#http的发展史可以分为四个版本" class="headerlink" title="http的发展史可以分为四个版本"></a>http的发展史可以分为四个版本</h3><ol>
+<li>http/0.9 (1991)</li>
+<li>http/1.0 (1996)</li>
+<li>http/1.1 (1999)</li>
+<li>http/2 (2015)</li>
+</ol>
+<h2 id="http-0-9"><a href="#http-0-9" class="headerlink" title="http/0.9"></a>http/0.9</h2><ol>
+<li>http是基于TCP/IP协议的应用层协议（OSI的七层模型）</li>
+<li>默认80端口</li>
+<li>只支持get方式</li>
+<li>不支持传输数据包，只能够传输html规格的字符串</li>
+</ol>
+<blockquote>
+<p>ps: 数据包在http1.0之后分为数据请求包，数据响应包<br>请求包：请求行；消息头；消息正文<br>响应包：状态行；消息头；响应正文</p>
+</blockquote>
+<h2 id="http-1-0"><a href="#http-1-0" class="headerlink" title="http/1.0"></a>http/1.0</h2><ol>
+<li>所有的形式的文件都可以传输，包括图像视频等二进制文件</li>
+<li>除了GET，还引入了POST和HEAD命令</li>
+<li>http请求的回应格式也不同，除了数据，还有http header数据头部分</li>
+<li>缓存主要靠的是If-Modified-Since,Expires</li>
+</ol>
+<h2 id="存在的问题（这个是个1-1改进的基础）"><a href="#存在的问题（这个是个1-1改进的基础）" class="headerlink" title="存在的问题（这个是个1.1改进的基础）"></a>存在的问题（这个是个1.1改进的基础）</h2><blockquote>
+<p>简单来说就是一个TCP只能有发起一个http连接，并且tcp的因为要握手，所以速度非常慢。</p>
+</blockquote>
+<ul>
+<li>每个 TCP 连接只能发送一个请求。发送数据完毕，连接就关闭，如果还要请求其他资源，就必须再新建一个连接。</li>
+<li>TCP 连接的新建成本很高，因为需要客户端和服务器三次握手，并且开始时发送速率较慢（slow start）。</li>
+</ul>
+<h2 id="http-1-1"><a href="#http-1-1" class="headerlink" title="http/1.1"></a>http/1.1</h2><ol>
+<li>长连接（PersistentConnection）： 就是说一个TCP/IP连接可以发送多个http请求和响应。默认开启 Connection： keep-alive，减少每次请求都要发起TCP/IP请求的时间和延迟。</li>
+<li>1.1的缓存新增了更多的字段：Etag, If-Unmodified-Since, If-Match, If-None-Match</li>
+<li><a href="https://blog.csdn.net/zhangliangzi/article/details/51348755" target="_blank" rel="noopener">断点续传</a>, 就是大文件下载的断点实现，Range和Content-Range这两个字段来控制，状态码返回206，如果资源有变动，就靠last-modified或者Etag这样的字段和If-Range配合来判断资源是否变化。（这个特性可以解决腾讯wxg问的大文件上传如何处理）</li>
+<li>新增24个错误响应码</li>
+<li>Host 头处理：在 HTTP1.0 中认为每台服务器都绑定一个唯一的 IP 地址，因此，请求消息中的 URL 并没有传递主机名（hostname）。但随着虚拟主机技术的发展，在一台物理服务器上可以存在多个虚拟主机（Multi-homed Web Servers），并且它们共享一个 IP 地址。HTTP1.1 的请求消息和响应消息都应支持 Host 头域，且请求消息中如果没有 Host 头域会报告一个错误（400 Bad Request）。</li>
+</ol>
+<h2 id="1-1的问题"><a href="#1-1的问题" class="headerlink" title="1.1的问题"></a>1.1的问题</h2><ul>
+<li>TCP/IP复用解决连接的耗时和延迟，但是这里的http请求是按顺序执行的，会产生”队头堵塞”（Head-of-line blocking）。</li>
+<li>HTTP1.x 在传输数据时，所有传输的内容都是明文，客户端和服务器端都无法验证对方的身份，这在一定程度上无法保证数据的安全性。</li>
+<li>HTTP1.x 在使用时，header 里携带的内容过大，在一定程度上增加了传输的成本，并且每次请求 header 基本不怎么变化，尤其在移动端增加用户流量。</li>
+<li>虽然 HTTP1.x 支持了 keep-alive，来弥补多次创建连接产生的延迟，但是 keep-alive 使用多了同样会给服务端带来大量的性能压力，并且对于单个文件被不断请求的服务(例如图片存放网站)，keep-alive 可能会极大的影响性能，因为它在文件被请求之后还保持了不必要的连接很长时间。<br>keep-alive带来的问题：同域并行请求限制带来的阻塞（6~8）个</li>
+</ul>
+<h2 id="SPDY协议是HTTP2的基础"><a href="#SPDY协议是HTTP2的基础" class="headerlink" title="SPDY协议是HTTP2的基础"></a>SPDY协议是HTTP2的基础</h2><ol>
+<li>多路复用，也就是说在TCP/IP的链接下，同时发送多个请求，收到多个响应，不再受到阻塞的问题。</li>
+<li>请求优先级（request prioritization）。多路复用带来一个新的问题是，在连接共享的基础之上有可能会导致关键请求被阻塞。SPDY 允许给每个 request 设置优先级，这样重要的请求就会优先得到响应。比如浏览器加载首页，首页的 html 内容应该优先展示，之后才是各种静态资源文件，脚本文件等加载，这样可以保证用户能第一时间看到网页内容。</li>
+<li>header 压缩。前面提到 HTTP1.x 的 header 很多时候都是重复多余的。选择合适的压缩算法可以减小包的大小和数量。</li>
+</ol>
+<h2 id="HTTP2"><a href="#HTTP2" class="headerlink" title="HTTP2"></a>HTTP2</h2><ol>
+<li><p>二进制分帧：HTTP/2 的所有帧都采用二进制编码</p>
+<blockquote>
+<p>帧、流、消息的关系:<br>每个数据流都以消息的形式发送，而消息又由一个或多个帧组成。 帧是流中的数据单位。一个数据报的header帧可以分成多个 header 帧，data 帧可以分成多个 data 帧。</p>
+</blockquote>
+</li>
+<li><p>多路复用的补充</p>
+<blockquote>
+<p><b>多路复用的时候如何保证顺序发出的和接收的是同一个：</b>一个 request 对应一个 id，这样一个连接上可以有多个 request，每个连接的 request 可以随机的混杂在一起，接收方可以根据 request 的 id 将 request 再归属到各自不同的服务端请求里面</p>
+</blockquote>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">http</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/21/http%E7%9A%84%E5%8F%91%E5%B1%95%E5%8F%B2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-一个关于http的总结-发誓再也不要被面试官虐" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -163,6 +294,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
+<p>最近和朋友交流，如何才能答出一个出彩的回答，有了一些总结，低端的选手背答案，中档的选手理解知识，高级的选手抛出应用场景，sp是提出解决问题的方案，ssp会统筹调动资源。</p>
+</blockquote>
+<blockquote>
 <p>Q:为什么会想总结一个这样的话题呢？<br>A:本质上，就是不想再被面试官虐；其次就是改变自己”被灌输“的思维习惯。</p>
 </blockquote>
 <h2 id="什么是http-什么是https-（先来点basic）"><a href="#什么是http-什么是https-（先来点basic）" class="headerlink" title="什么是http? 什么是https?（先来点basic）"></a>什么是http? 什么是https?（先来点basic）</h2><blockquote>
@@ -196,7 +330,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">js面试</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">http</a>
         		</li>
       		
 		</ul>
@@ -887,78 +1021,6 @@
 
 
   
-    <article id="post-应用Promise封装Ajax实践" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/13/%E5%BA%94%E7%94%A8Promise%E5%B0%81%E8%A3%85Ajax%E5%AE%9E%E8%B7%B5/">应用Promise封装Ajax实践</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/13/%E5%BA%94%E7%94%A8Promise%E5%B0%81%E8%A3%85Ajax%E5%AE%9E%E8%B7%B5/" class="archive-article-date">
-  	<time datetime="2020-03-13T08:19:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>axios在项目中经常使用，我们来看看如何把axios封装成好用的promise吧！</p>
-<h5 id="what-is-axios"><a href="#what-is-axios" class="headerlink" title="what is axios?"></a>what is axios?</h5><ul>
-<li>Promise based HTTP client for the browser and node.js</li>
-</ul>
-<p>咦? Promise based http？ where is promise?</p>
-<p>源码中查看：axios/lib/adapters/xhr.js有这样一段让我眼前一亮：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> <span class="title">xhrAdapter</span>(<span class="params">config</span>) </span>&#123;</span><br><span class="line"> <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> <span class="title">dispatchXhrRequest</span>(<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line"> &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/13/%E5%BA%94%E7%94%A8Promise%E5%B0%81%E8%A3%85Ajax%E5%AE%9E%E8%B7%B5/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1066,6 +1128,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">NLP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">http</a>
               </li>
             
             <div class="clearfix"></div>
