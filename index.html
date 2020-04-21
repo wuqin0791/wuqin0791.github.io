@@ -209,18 +209,15 @@
 <li>header 压缩。前面提到 HTTP1.x 的 header 很多时候都是重复多余的。选择合适的压缩算法可以减小包的大小和数量。</li>
 </ol>
 <h2 id="HTTP2"><a href="#HTTP2" class="headerlink" title="HTTP2"></a>HTTP2</h2><ol>
-<li><p>二进制分帧：HTTP/2 的所有帧都采用二进制编码</p>
-<blockquote>
+<li>二进制分帧：HTTP/2 的所有帧都采用二进制编码<blockquote>
 <p>帧、流、消息的关系:<br>每个数据流都以消息的形式发送，而消息又由一个或多个帧组成。 帧是流中的数据单位。一个数据报的header帧可以分成多个 header 帧，data 帧可以分成多个 data 帧。</p>
 </blockquote>
 </li>
-<li><p>多路复用的补充</p>
-<blockquote>
+<li>多路复用的补充<blockquote>
 <p><b>多路复用的时候如何保证顺序发出的和接收的是同一个：</b>一个 request 对应一个 id，这样一个连接上可以有多个 request，每个连接的 request 可以随机的混杂在一起，接收方可以根据 request 的 id 将 request 再归属到各自不同的服务端请求里面</p>
 </blockquote>
 </li>
-<li><p>请求优先级</p>
-<blockquote>
+<li>请求优先级<blockquote>
 <p>把 HTTP 消息分解为很多独立的帧之后，就可以通过优化这些帧的交错和传输顺序，每个流都可以带有一个 31 比特的优先值：0 表示最高优先级；2 的 31 次方-1 表示最低优先级。比如，可以把首页请求的优先级设高一些。</p>
 </blockquote>
 </li>
