@@ -16,7 +16,7 @@
 <meta property="og:description" content="手写深拷贝是一个经常被面试官问到的题目，可是我们通常只考虑对象和数组两种情况，也不考虑成环的情况。下面想分享一个近乎完美的深拷贝代码。  什么是深拷贝？ 深拷贝就是对象a和对象b之间没有引用，简单来说就是对象a、b之间没有联系。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-06-25T07:41:31.000Z">
-<meta property="article:modified_time" content="2020-06-25T07:43:45.000Z">
+<meta property="article:modified_time" content="2020-06-25T14:16:00.000Z">
 <meta property="article:author" content="JeanneWu">
 <meta property="article:tag" content="js面试">
 <meta name="twitter:card" content="summary">
@@ -172,6 +172,34 @@
 <p>深拷贝就是对象a和对象b之间没有引用，简单来说就是对象a、b之间没有联系。</p>
 </blockquote>
 <a id="more"></a>
+
+<h2 id="初级拷贝方法stringify"><a href="#初级拷贝方法stringify" class="headerlink" title="初级拷贝方法stringify"></a>初级拷贝方法stringify</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = &#123;</span><br><span class="line">  b: <span class="number">1</span>,</span><br><span class="line">  c: [<span class="number">1</span>,<span class="number">2</span>,<span class="number">4</span>],</span><br><span class="line">  d: &#123;<span class="string">'ddd'</span>: <span class="number">1</span>, <span class="string">'rrr'</span>: <span class="number">2</span>&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> b = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(a))</span><br></pre></td></tr></table></figure>
+<ul>
+<li>缺点：</li>
+</ul>
+<ol>
+<li>不支持函数，不会报错，只是会忽略函数</li>
+<li>不支持undefined</li>
+<li>不支持环状结构引用，例如 a.d = a这样</li>
+<li>不支持date（new Date（）），会记录下date的时间</li>
+<li>不支持正则</li>
+<li>不支持symbol</li>
+</ol>
+<blockquote>
+<p>原因是因为json只支持几个基本的数据类型，可以去<a href="https://www.json.org/json-en.html" target="_blank" rel="noopener">json.org</a>里查找, json只支持七种类型（object、array、string、number、true、false、null）</p>
+</blockquote>
+<ul>
+<li>那么stringify支持的没有那么好，那应该怎么处理呢？</li>
+<li>利用递归来做</li>
+</ul>
+<h2 id="针对基本变量"><a href="#针对基本变量" class="headerlink" title="针对基本变量"></a>针对基本变量</h2><h2 id="针对对象"><a href="#针对对象" class="headerlink" title="针对对象"></a>针对对象</h2><h2 id="针对数组"><a href="#针对数组" class="headerlink" title="针对数组"></a>针对数组</h2><h2 id="针对函数"><a href="#针对函数" class="headerlink" title="针对函数"></a>针对函数</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> dist = <span class="function"><span class="keyword">function</span> (<span class="params">source</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> source.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="考虑source对象成环的情况"><a href="#考虑source对象成环的情况" class="headerlink" title="考虑source对象成环的情况"></a>考虑source对象成环的情况</h2><p>用栈的方式记录，如果想效率高一些，可以用hashmap的方式。</p>
+<h2 id="考虑爆栈的情况"><a href="#考虑爆栈的情况" class="headerlink" title="考虑爆栈的情况"></a>考虑爆栈的情况</h2><h2 id="拷贝RegExp和Date"><a href="#拷贝RegExp和Date" class="headerlink" title="拷贝RegExp和Date"></a>拷贝RegExp和Date</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"hi\\d+"</span>, <span class="string">"ig"</span>)</span><br><span class="line">a.source <span class="comment">//hi\\d+</span></span><br><span class="line">a.flag <span class="comment">// ig</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>可以通过source和flag两种方式拿到正则表达式</li>
+</ul>
+
       
 
       
@@ -202,6 +230,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2020/06/25/vscode-%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          vscode 常用快捷键
+        
+      </div>
+    </a>
   
   
     <a href="/2020/06/24/vue%E9%80%A0%E8%BD%AE%E5%AD%90%E4%B9%8Bbutton/" id="article-nav-older" class="article-nav-link-wrap">
@@ -328,6 +365,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">正则表达式</a>
               </li>
              
@@ -336,19 +381,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">js面试</a>
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ES6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">js面试</a>
               </li>
              
               <li class="article-tag-list-item">

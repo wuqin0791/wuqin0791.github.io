@@ -6,24 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>vue造轮子之button组件 | JeanneWu&#39;s blog</title>
+  <title>Archives: 2020 | JeanneWu&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="最近闲来无事，研究了如何使用vue来造轮子，丰富自己的组件库，那么就从最简单的button开始吧。所有的代码都在下面这个仓库里，欢迎star~ https:&#x2F;&#x2F;github.com&#x2F;wuqin0791&#x2F;gulu">
-<meta property="og:type" content="article">
-<meta property="og:title" content="vue造轮子之button组件">
-<meta property="og:url" content="http://yoursite.com/2020/06/24/vue%E9%80%A0%E8%BD%AE%E5%AD%90%E4%B9%8Bbutton/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="JeanneWu&#39;s blog">
+<meta property="og:url" content="http://yoursite.com/archives/2020/page/3/index.html">
 <meta property="og:site_name" content="JeanneWu&#39;s blog">
-<meta property="og:description" content="最近闲来无事，研究了如何使用vue来造轮子，丰富自己的组件库，那么就从最简单的button开始吧。所有的代码都在下面这个仓库里，欢迎star~ https:&#x2F;&#x2F;github.com&#x2F;wuqin0791&#x2F;gulu">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yoursite.com/2020/06/24/vue%E9%80%A0%E8%BD%AE%E5%AD%90%E4%B9%8Bbutton/01.%E8%AE%BE%E8%AE%A1%E7%A8%BF.png">
-<meta property="og:image" content="http://yoursite.com/2020/06/24/vue%E9%80%A0%E8%BD%AE%E5%AD%90%E4%B9%8Bbutton/02.parcel%E7%9A%84%E9%97%AE%E9%A2%98.png">
-<meta property="og:image" content="http://yoursite.com/2020/06/24/vue%E9%80%A0%E8%BD%AE%E5%AD%90%E4%B9%8Bbutton/03.gif">
-<meta property="article:published_time" content="2020-06-24T11:21:55.000Z">
-<meta property="article:modified_time" content="2020-06-24T13:46:51.000Z">
 <meta property="article:author" content="JeanneWu">
-<meta property="article:tag" content="vue">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/06/24/vue%E9%80%A0%E8%BD%AE%E5%AD%90%E4%B9%8Bbutton/01.%E8%AE%BE%E8%AE%A1%E7%A8%BF.png">
   
     <link rel="alternative" href="/atom.xml" title="JeanneWu&#39;s blog" type="application/atom+xml">
   
@@ -149,179 +140,63 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-vue造轮子之button" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      vue造轮子之button组件
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/02/19/My-New-Post/" class="archive-article-date">
+  	<time datetime="2020-02-19T15:12:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-19</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/02/19/My-New-Post/">匹配IP的正则表达式</a>
     </h1>
   
 
-        
-        <a href="/2020/06/24/vue%E9%80%A0%E8%BD%AE%E5%AD%90%E4%B9%8Bbutton/" class="archive-article-date">
-  	<time datetime="2020-06-24T11:21:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>最近闲来无事，研究了如何使用vue来造轮子，丰富自己的组件库，那么就从最简单的button开始吧。<br>所有的代码都在下面这个仓库里，欢迎star~ <a href="https://github.com/wuqin0791/gulu" target="_blank" rel="noopener">https://github.com/wuqin0791/gulu</a></p>
-</blockquote>
-<a id="more"></a>
-<h2 id="将会从以下几个方面去分享："><a href="#将会从以下几个方面去分享：" class="headerlink" title="将会从以下几个方面去分享："></a>将会从以下几个方面去分享：</h2><ol>
-<li>设计稿与素材准备</li>
-<li>工具类使用</li>
-<li>组件细节处理</li>
-<li>单元测试</li>
-</ol>
-<h2 id="设计稿"><a href="#设计稿" class="headerlink" title="设计稿"></a>设计稿</h2><p><img src="/2020/06/24/vue%E9%80%A0%E8%BD%AE%E5%AD%90%E4%B9%8Bbutton/01.%E8%AE%BE%E8%AE%A1%E7%A8%BF.png" alt></p>
-<blockquote>
-<p>常见的设计工具是<a href="https://www.sketch.com/" target="_blank" rel="noopener">sketch</a>，不过这是个mac应用，window用户可以考虑一下在线编辑的的语雀</p>
-</blockquote>
-<h2 id="icon的制作"><a href="#icon的制作" class="headerlink" title="icon的制作"></a>icon的制作</h2><ul>
-<li>关于组件里的icon，以前的开发喜欢用雪碧图，现在的icon基本是SVG，可以去<a href="https://www.iconfont.cn/" target="_blank" rel="noopener">阿里巴巴矢量图标库</a>去找，可以找到loading、up、down等等icon，并且生成link可以直接引入项目中。ps:使用阿里的cdn服务器，稳定！</li>
-</ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"//at.alicdn.com/t/font_718972_1hhoomwpb69.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="parcel打包"><a href="#parcel打包" class="headerlink" title="parcel打包"></a>parcel打包</h2><blockquote>
-<p>打包工具有很多，比如主流的webpack，fis3，gulp，parcel等等，但是这里使用parcel的原因是上手非常快，几乎没有配置，也不容易踩坑。</p>
-</blockquote>
-<ul>
-<li>具体的打包过程可以去<a href="https://parceljs.org/getting_started.html" target="_blank" rel="noopener">parcel</a>官网查看，非常简单，安装后傻瓜式使用</li>
-</ul>
-<h3 id="将项目改成单页面模式"><a href="#将项目改成单页面模式" class="headerlink" title="将项目改成单页面模式"></a>将项目改成单页面模式</h3><ul>
-<li>目录结构如下：可以安装插件tree，使用命令 tree -I ‘node_modules|dist’ 可以避免输出node_modules</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">├── LICENSE</span><br><span class="line">├── README.md</span><br><span class="line">├── index.html</span><br><span class="line">├── package-lock.json</span><br><span class="line">├── package.json</span><br><span class="line">└── src</span><br><span class="line">    ├── app.js</span><br><span class="line">    ├── button-group.vue</span><br><span class="line">    ├── button.vue</span><br><span class="line">    └── icon.vue</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="如果你在使用parcel的时候，发生以下问题。"><a href="#如果你在使用parcel的时候，发生以下问题。" class="headerlink" title="如果你在使用parcel的时候，发生以下问题。"></a>如果你在使用parcel的时候，发生以下问题。</h3><p><img src="/2020/06/24/vue%E9%80%A0%E8%BD%AE%E5%AD%90%E4%B9%8Bbutton/02.parcel%E7%9A%84%E9%97%AE%E9%A2%98.png" alt></p>
-<ul>
-<li>你有两种解决方法</li>
-</ul>
-<ol>
-<li>运行的时候带上index.html， 比如 ./node_modules/.bin/parcel index.html</li>
-<li>使用npx parcel index.html（因为npx会去查找parcel这个变量）</li>
-</ol>
-<h3 id="如果你不够幸运，还遇到这个问题。"><a href="#如果你不够幸运，还遇到这个问题。" class="headerlink" title="如果你不够幸运，还遇到这个问题。"></a>如果你不够幸运，还遇到这个问题。</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Vue warn]: You are using the runtime-only build of Vue <span class="built_in">where</span> the template compiler is not available. Either pre-compile the templates into render <span class="built_in">functions</span>, or use the compiler-included build.</span><br></pre></td></tr></table></figure>
-<ul>
-<li>在vue的官网文档<a href="https://cn.vuejs.org/v2/guide/installation.html" target="_blank" rel="noopener">安装</a>就说了怎么解决这个问题，只需要在package.json里配置alias就好。</li>
-</ul>
-<h2 id="css中的-root"><a href="#css中的-root" class="headerlink" title="css中的:root"></a>css中的:root</h2><blockquote>
-<p>css3中有个属性叫做<a href="https://www.ruanyifeng.com/blog/2017/05/css-variables.html" target="_blank" rel="noopener">:root</a>, 可以定义css的变量。在caniuse里可以查看:root的兼容性，本质上:root也就是绑定在html根节点上，所以可以将:root换成html也是生效的，而且兼容性更好。</p>
-</blockquote>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span> &#123;</span><br><span class="line">    <span class="attribute">--button-height</span>: <span class="number">32px</span>;</span><br><span class="line">    <span class="attribute">--font-size</span>: <span class="number">14px</span>;</span><br><span class="line">    <span class="attribute">--button-bg</span>: white;</span><br><span class="line">    <span class="attribute">--button-active-bg</span>: <span class="number">#eee</span>;</span><br><span class="line">    <span class="attribute">--border-radius</span>: <span class="number">4px</span>;</span><br><span class="line">    <span class="attribute">--color</span>: <span class="number">#333</span>;</span><br><span class="line">    <span class="attribute">--border-color</span>: <span class="number">#999</span>;</span><br><span class="line">    <span class="attribute">--border-color-hover</span>: <span class="number">#666</span>;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="selector-class">.g-button</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="built_in">var</span>(--font-size);</span><br><span class="line">  <span class="attribute">height</span>: <span class="built_in">var</span>(--button-height);</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">1em</span>;</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="built_in">var</span>(--border-radius);</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="built_in">var</span>(--border-color);</span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">var</span>(--button-bg);</span><br><span class="line">  <span class="attribute">display</span>: inline-flex;</span><br><span class="line">  <span class="attribute">justify-content</span>: center;</span><br><span class="line">  <span class="attribute">align-items</span>: center;</span><br><span class="line">  <span class="attribute">vertical-align</span>: middle;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="如何控制icon的左右位置"><a href="#如何控制icon的左右位置" class="headerlink" title="如何控制icon的左右位置"></a>如何控制icon的左右位置</h2><p><img src="/2020/06/24/vue%E9%80%A0%E8%BD%AE%E5%AD%90%E4%B9%8Bbutton/03.gif" alt></p>
-<blockquote>
-<p>我们怎么控制icon是显示在左边还是右边呢？很明显，我们可能第一感觉是通过定义一个position变量if else来判断icon的位置，这里使用了iconPosition直接放在class里面来判断位置，默认是left，同时对value验证，样式则是用flex和order来控制。</p>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">:<span class="class"><span class="keyword">class</span></span>=<span class="string">"&#123;[`icon-$&#123;iconPosition&#125;`]: true&#125;"</span></span><br><span class="line"></span><br><span class="line">props: &#123;</span><br><span class="line">    iconPosition: &#123;</span><br><span class="line">      type: <span class="built_in">String</span>,</span><br><span class="line">      <span class="keyword">default</span>: <span class="string">"left"</span>,</span><br><span class="line">      validator(value) &#123;</span><br><span class="line">        <span class="keyword">return</span> value === <span class="string">"left"</span> || value === <span class="string">"right"</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.g-button</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: inline-flex;</span><br><span class="line">&#125;</span><br><span class="line">&amp;<span class="selector-class">.icon-right</span> &#123;</span><br><span class="line">  &gt; .content &#123;</span><br><span class="line">    <span class="selector-tag">order</span>: 1;</span><br><span class="line">  &#125;</span><br><span class="line">  &gt; <span class="selector-class">.icon</span> &#123;</span><br><span class="line">    <span class="attribute">order</span>: <span class="number">2</span>;</span><br><span class="line">    <span class="attribute">margin-right</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">margin-left</span>: <span class="number">0.1em</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>特别注意：</li>
-</ul>
-<ol>
-<li>:class=”{[<code>icon-${iconPosition}</code>]: true}”表示三种意思，{undefined: true},{left: true},{right: true},避免出现undefined显示出来的情况</li>
-<li>css中inline block导致的baseline的问题，可以用vertical-align: middle来解决</li>
-</ol>
-<h2 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h2><blockquote>
-<p>测试有三个概念: BDD、TDD、ASSERT</p>
-<ul>
-<li>BDD: Behavior-Driven develop</li>
-<li>TDD: Test-Driven Development</li>
-<li>ASSERT: 断言，如果正确了没有反应，如果错误了有error提示</li>
-</ul>
-</blockquote>
-<ul>
-<li>引入chai和chai-spies两个库来断言，例如获取xlink的link来断言是否等于#i-settings，来帮助开发人员对组件传入对的参数<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="keyword">const</span> Constructor = Vue.extend(Button)</span><br><span class="line">    <span class="keyword">const</span> vm = <span class="keyword">new</span> Constructor(&#123;</span><br><span class="line">      propsData: &#123;</span><br><span class="line">        icon: <span class="string">'settings'</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    vm.$mount()</span><br><span class="line">    <span class="keyword">let</span> useElement = vm.$el.querySelector(<span class="string">'use'</span>)</span><br><span class="line">    <span class="keyword">let</span> href = useElement.getAttribute(<span class="string">'xlink:href'</span>)</span><br><span class="line">    expect(href).to.eq(<span class="string">'#i-settings'</span>)</span><br><span class="line">    vm.$el.remove()</span><br><span class="line">    vm.$destroy()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2></li>
-<li>The digital design toolkit. (2020). Retrieved 24 June 2020, from <a href="https://www.sketch.com/" target="_blank" rel="noopener">https://www.sketch.com/</a></li>
-<li>Iconfont-阿里巴巴矢量图标库. (2020). Retrieved 24 June 2020, from <a href="https://www.iconfont.cn/" target="_blank" rel="noopener">https://www.iconfont.cn/</a></li>
-<li>🚀 Getting Started. (2020). Retrieved 24 June 2020, from <a href="https://parceljs.org/getting_started.html" target="_blank" rel="noopener">https://parceljs.org/getting_started.html</a></li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">正则表达式</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2020/06/25/%E5%A6%82%E4%BD%95%E5%86%99%E5%87%BA%E4%B8%80%E4%B8%AA%E5%AE%8C%E7%BE%8E%E7%9A%84%E6%B7%B1%E6%8B%B7%E8%B4%9D/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          如何写出一个完美的深拷贝
-        
-      </div>
-    </a>
   
   
-    <a href="/2020/05/16/%E5%88%A9%E7%94%A8es6%E7%9A%84proxy%E6%9D%A5%E5%A4%84%E7%90%86%E8%A1%A8%E5%8D%95%E6%95%B0%E6%8D%AE%E9%AA%8C%E8%AF%81/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">利用es6的proxy来处理表单数据验证</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
+    
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/archives/2020/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/archives/2020/">1</a><a class="page-number" href="/archives/2020/page/2/">2</a><span class="page-number current">3</span>
+    </nav>
   
 
 
@@ -350,8 +225,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
